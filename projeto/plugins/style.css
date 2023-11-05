@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+  font-family: 'VT323', monospace;
+}
+
+body {
+  overflow: hidden;
+  background-color: black;
+  padding: 2%;
+  position: static;
+}
+
+footer,
+.score,
+header {
+  display: none;
+}
+
+main {
+  padding: 10px;
+  gap: 10px;
+  border: 1px solid white;
+  overflow: hidden;
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: .5fr 1fr .85fr;
+  background-color: #000000;
+}
+
+/* >->->->>->->->->->->>->->->->->->>->->->->->->->->-> */
+.text {
+  overflow: hidden;
+  grid-column: 2 / 4;
+  grid-row: 3;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  box-shadow: inset 0 0 30px rgb(55, 55, 55);
+  justify-content: center;
+}
+
+div.text p {
+  overflow: hidden;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+main div.text p>*>* {
+  color: rgb(28, 28, 28);
+}
+
+main div.text p>.wrong,
+main div.text p>.correct,
+main div.text p>*>.correct,
+main div.text p>*>.wrong {
+  color: transparent;
+  background-color: transparent;
+  border: none;
+}
+
+main div.text p>*>.current {
+  background-color: transparent;
+  animation: pulseBg 1s infinite;
+}
+
+@keyframes pulseBg {
+
+  0%,
+  100% {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
+    transform: scale(1);
+  }
+
+  50% {
+    text-shadow: none;
+  }
+}
+
+/* BARRAS */
+.divBar {
+  grid-column: 1;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  grid-row: 3;
+  width: 100%;
+  height: 100%;
+}
+
+.bar {
+  box-shadow: inset 0 0 30px rgb(55, 55, 55);
+  border: 1px solid white;
+  width: 100%;
+}
+
+/* CRONOMETRO */
+.timer {
+  color: white;
+  text-shadow: 0 0 30px rgb(167, 167, 167);
+  font-size: 2.5em;
+  align-self: flex-start;
+  padding: 0 5px;
+}
+
+/* TELA DE START */
+.start, .restart{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  background-color: #000000;
+  box-shadow: 0 0 10px 10px inset #232323;
+  margin: 2%;
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.rules {
+  margin: 0;
+  text-align: left;
+  align-self: flex-end;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 4vh;
+}
+
+.stBtn, .reBtn { 
+  border: 1px solid red;
+  color: red;
+  align-self: flex-start;
+  font-size: 1.5em;
+  padding: 16px 32px;
+  order: 2;
+  background-color: black;
+}
+
+.stBtn:active,
+.reBtn:active {
+  background-color: red;
+  color: black;
+  box-shadow: #ff0000 0 0 10px;
+}
+
+#title {
+  font-size: 3em;
+  color: red;
+}
+
+/* TELA DE RESTART */
+.restart{
+  display: none;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+} 
+
+.reBtn{ grid-row: 2; }
