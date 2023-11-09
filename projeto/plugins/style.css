@@ -29,6 +29,19 @@ main {
   background-color: #000000;
 }
 
+button {
+  order: 2;
+  border: 1px solid red;
+  align-self: flex-start;
+  padding: 24px 32px;
+  background-color: rgb(0, 0, 0);
+}
+
+button:active {
+  background-color: red;
+  box-shadow: #ff0000 0 0 10px;
+}
+
 /* >->->->>->->->->->->>->->->->->->>->->->->->->->->-> */
 .text {
   overflow: hidden;
@@ -39,14 +52,13 @@ main {
   display: flex;
   align-items: center;
   border: 1px solid white;
-  box-shadow: inset 0 0 30px rgb(55, 55, 55);
   justify-content: center;
 }
 
 div.text p {
   overflow: hidden;
   margin: 0;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 main div.text p>*>* {
@@ -92,7 +104,6 @@ main div.text p>*>.current {
 }
 
 .bar {
-  box-shadow: inset 0 0 30px rgb(55, 55, 55);
   border: 1px solid white;
   width: 100%;
 }
@@ -106,46 +117,21 @@ main div.text p>*>.current {
   padding: 0 5px;
 }
 
-/* TELA DE START */
-.start, .restart{
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  justify-content: center;
-  background-color: #000000;
-  box-shadow: 0 0 10px 10px inset #232323;
-  margin: 2%;
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  top: 0;
-}
-
 .rules {
   margin: 0;
+  grid-row: 1;
+  grid-column: 2;
   text-align: left;
   align-self: flex-end;
   text-transform: uppercase;
   color: white;
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin-bottom: 4vh;
 }
 
-.stBtn, .reBtn { 
-  border: 1px solid red;
-  color: red;
-  align-self: flex-start;
-  font-size: 1.5em;
-  padding: 16px 32px;
-  order: 2;
-  background-color: black;
-}
-
-.stBtn:active,
-.reBtn:active {
-  background-color: red;
-  color: black;
-  box-shadow: #ff0000 0 0 10px;
+.start>button {
+  grid-row: 2;
+  grid-column: 2;
 }
 
 #title {
@@ -153,11 +139,64 @@ main div.text p>*>.current {
   color: red;
 }
 
-/* TELA DE RESTART */
-.restart{
-  display: none;
+/* ################################# */
+.end,
+.win,
+.start {
+  margin: 2%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  background-color: #000000;
   grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
   align-items: center;
-} 
+}
 
-.reBtn{ grid-row: 2; }
+.titleScreen {
+  text-align: center;
+  font-size: 3em;
+  grid-row: 1;
+  grid-column: 2;
+  animation: rainbow .4s infinite;
+  background-size: 500% 500%;
+  background: linear-gradient(#CA4246 16.666%,
+      #E16541 16.666%,
+      #E16541 33.333%,
+      #F18F43 33.333%,
+      #F18F43 50%,
+      #8B9862 50%,
+      #8B9862 66.666%,
+      #476098 66.666%,
+      #476098 83.333%,
+      #A7489B 83.333%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.win>button,
+.end>button {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+@keyframes rainbow {
+  0% {
+    background-size: 0%;
+    background-position: 0 0;
+  }
+
+  20% {
+    background-size: 50%;
+    background-position: 2rem 2rem;
+  }
+
+  100% {
+    background-size: 300%;
+    background-position: 3rem 0em;
+  }
+}
